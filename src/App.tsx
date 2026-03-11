@@ -17,6 +17,7 @@ import { SiteInspectionsComparison } from './pages/SiteInspectionsComparison'
 import { Schedules } from './pages/Schedules'
 import { StoreActivations } from './pages/StoreActivations'
 import { StoreActivation } from './pages/StoreActivation'
+import { EditStore } from './pages/EditStore'
 import './App.css'
 
 function RootRedirect() {
@@ -62,6 +63,7 @@ function App() {
             <Route path="/schedules" element={<RoleRoute roles={['Admin', 'Area Manager']} element={<Schedules />} />} />
             <Route path="/store-activations"     element={<RoleRoute roles={['Admin', 'Operations', 'Franchise', 'Area Manager']} element={<StoreActivations />} />} />
             <Route path="/store-activations/:id" element={<RoleRoute roles={['Admin', 'Operations', 'Franchise', 'Area Manager']} element={<StoreActivation />} />} />
+            <Route path="/stores/:id/edit"       element={<RoleRoute roles={['Admin', 'Operations']} element={<EditStore />} />} />
           </Route>
         </Route>
 

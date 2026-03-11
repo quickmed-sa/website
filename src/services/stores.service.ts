@@ -1,4 +1,4 @@
-import { api, apiUpload } from './api'
+import { api, apiUpload, apiDownload } from './api'
 
 // ── Activation-phase enums ────────────────────────────────────────────────────
 
@@ -207,4 +207,16 @@ export const storesService = {
     files.forEach(f => fd.append('videos', f))
     return apiUpload<Store>(`/stores/${id}/activation/video`, fd)
   },
+
+  removeStoreImage: (id: string, url: string) =>
+    api.delete<Store>(`/stores/${id}/activation/images?url=${encodeURIComponent(url)}`),
+
+  removeStoreVideo: (id: string, url: string) =>
+    api.delete<Store>(`/stores/${id}/activation/videos?url=${encodeURIComponent(url)}`),
+
+  downloadMedia: (id: string, storeName: string) =>
+    apiDownload(
+      `/stores/${id}/media.zip`,
+      `${storeName.replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-')}-media.zip`,
+    ),
 }

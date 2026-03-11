@@ -6,7 +6,6 @@ import { ApiError } from '../services/api'
 import { authService } from '../services/auth.service'
 import { AssignModal } from '../components/AssignModal'
 import { AddStoreModal } from '../components/AddStoreModal'
-import { EditStoreModal } from '../components/EditStoreModal'
 import './Stores.css'
 
 function StatusBadge({ status }: { status: StoreStatus }) {
@@ -135,7 +134,6 @@ export function Stores() {
   /** Which store's AssignModal is open (null = closed) */
   const [modalStoreId, setModalStoreId] = useState<string | null>(null)
   const [showAddStore, setShowAddStore] = useState(false)
-  const [editStoreId,  setEditStoreId]  = useState<string | null>(null)
 
   const fetchAll = useCallback(async () => {
     setLoading(true)
@@ -330,7 +328,7 @@ export function Stores() {
                         busy={busyId === store._id}
                         onAction={handleAction}
                         onSiteInspect={handleSiteInspect}
-                        onEdit={isAdmin ? () => setEditStoreId(store._id) : undefined}
+                        onEdit={isAdmin ? () => navigate(`/stores/${store._id}/edit`) : undefined}
                       />
                     </td>
                   </tr>
@@ -386,7 +384,7 @@ export function Stores() {
                     busy={busyId === store._id}
                     onAction={handleAction}
                     onSiteInspect={handleSiteInspect}
-                    onEdit={isAdmin ? () => setEditStoreId(store._id) : undefined}
+                    onEdit={isAdmin ? () => navigate(`/stores/${store._id}/edit`) : undefined}
                   />
                   {isAdmin && (
                     <button
@@ -428,20 +426,6 @@ export function Stores() {
         />
       )}
 
-      {/* Edit store modal */}
-      {editStoreId && (() => {
-        const editStore = stores.find(s => s._id === editStoreId)
-        return editStore ? (
-          <EditStoreModal
-            store={editStore}
-            onUpdated={async () => {
-              setEditStoreId(null)
-              await refetchStores()
-            }}
-            onClose={() => setEditStoreId(null)}
-          />
-        ) : null
-      })()}
     </div>
   )
 }
