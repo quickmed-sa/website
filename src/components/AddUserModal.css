@@ -1,0 +1,67 @@
+.add-user-modal {
+  max-width: 440px;
+}
+
+.add-user-form {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Scrollable field area */
+.add-user-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Role + Status side by side */
+.add-user-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.25rem;
+  cursor: pointer;
+}
+
+.add-user-error {
+  margin: 0;
+}
+
+/* Footer with Cancel + Submit */
+.add-user-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border);
+  background: #fafafa;
+  flex-shrink: 0;
+}
+
+.add-user-footer .btn {
+  align-self: auto;
+}
+
+.add-user-footer .btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .add-user-row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,198 @@
+/* ── Inspector name field (Stage 1) ───────────────────────────────────────── */
+
+.si-inspector-field {
+  margin-bottom: 1.25rem;
+}
+
+/* ── Store card (Stage 1) ──────────────────────────────────────────────────── */
+
+.si-store-card {
+  background: var(--primary-subtle);
+  border: 1px solid var(--primary-light);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.si-store-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--primary);
+}
+
+.si-store-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
+.si-store-type {
+  font-weight: 600;
+}
+
+.si-store-address {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Within-range success notice ───────────────────────────────────────────── */
+
+.si-notice-ok {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f0fdf4;
+  color: #15803d;
+  border-left: 3px solid #16a34a;
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.9rem;
+  font-size: 0.88rem;
+  margin-bottom: 1rem;
+}
+
+/* ── Rating buttons (1–5) ──────────────────────────────────────────────────── */
+
+.si-rating {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.si-rating-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s, color 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.si-rating-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.si-rating-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* ── Rating scale hint ─────────────────────────────────────────────────────── */
+
+.si-rating-hint {
+  font-size: 0.8rem !important;
+  color: var(--text-muted) !important;
+  margin: -0.25rem 0 0.85rem !important;
+  font-style: italic;
+}
+
+/* ── Site photos picker ─────────────────────────────────────────────────────── */
+
+.si-photos-section {
+  margin-top: 1.25rem;
+  border-top: 1px dashed var(--border);
+  padding-top: 1.25rem;
+}
+
+.si-photos-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+.si-photos-label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.si-photos-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.si-photos-hint {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0 0 0.85rem;
+}
+
+.si-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.si-photo-thumb {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-page);
+}
+
+.si-photo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.si-photo-remove {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.1s;
+}
+
+.si-photo-remove:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.si-photos-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.si-photos-actions .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .si-rating-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.82rem;
+  }
+}

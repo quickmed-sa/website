@@ -1,0 +1,29 @@
+.btn-location {
+  background: #0ea5e9;
+  color: #fff;
+}
+
+.btn-location:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.coords-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.05rem;
+}
+
+.coords-table td {
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.coords-table td:first-child {
+  color: #555;
+  font-weight: 500;
+  width: 45%;
+}
+
+.coords-table tr:last-child td {
+  border-bottom: none;
+}

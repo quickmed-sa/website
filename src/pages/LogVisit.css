@@ -1,0 +1,694 @@
+/* ── Page shell ──────────────────────────────────────────────────────────────── */
+
+.lv-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+
+.lv-header {
+  margin-bottom: 1.5rem;
+}
+
+.lv-header-sub {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.lv-header-store {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Stage bar ───────────────────────────────────────────────────────────────── */
+
+.lv-stagebar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+  overflow-x: auto;
+}
+
+.lv-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.lv-stage-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lv-stage-active .lv-stage-dot {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 0 4px var(--accent-light);
+}
+
+.lv-stage-done .lv-stage-dot {
+  background: var(--primary);
+  color: #fff;
+}
+
+.lv-stage-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.lv-stage-active .lv-stage-label,
+.lv-stage-done .lv-stage-label {
+  color: var(--text-primary);
+}
+
+.lv-stage-line {
+  position: absolute;
+  top: 16px;
+  left: calc(50% + 16px);
+  right: calc(-50% + 16px);
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.lv-stage-done .lv-stage-line {
+  background: var(--primary);
+}
+
+/* ── Content sections ────────────────────────────────────────────────────────── */
+
+.lv-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.lv-section-center {
+  text-align: center;
+}
+
+.lv-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lv-section-center .lv-section-title {
+  justify-content: center;
+}
+
+.lv-hint {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0 0 1.25rem;
+}
+
+/* ── Status / notice ─────────────────────────────────────────────────────────── */
+
+.lv-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding: 0.75rem 0;
+}
+
+.lv-notice {
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.9rem;
+  font-size: 0.88rem;
+  margin-bottom: 1rem;
+}
+
+.lv-notice-info {
+  background: var(--primary-subtle);
+  color: var(--primary);
+  border-left: 3px solid var(--primary);
+}
+
+.lv-notice-warn {
+  background: #fff7ed;
+  color: #92400e;
+  border-left: 3px solid var(--accent);
+}
+
+.lv-notice-error {
+  background: #fef2f2;
+  color: #991b1b;
+  border-left: 3px solid #ef4444;
+}
+
+/* ── Store list ──────────────────────────────────────────────────────────────── */
+
+.lv-store-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 420px;
+  overflow-y: auto;
+  margin-bottom: 1.25rem;
+  padding-right: 2px;
+}
+
+.lv-store-card {
+  width: 100%;
+  text-align: left;
+  background: var(--bg-page);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s, box-shadow 0.12s;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lv-store-card:hover {
+  border-color: var(--primary-light);
+  background: #fff;
+}
+
+.lv-store-selected {
+  border-color: var(--accent) !important;
+  background: var(--accent-light) !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+}
+
+.lv-store-nearby {
+  border-color: var(--primary-light);
+  background: var(--primary-subtle);
+}
+
+.lv-store-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.lv-store-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.lv-store-sub {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.lv-nearby-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.lv-dist-badge {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.lv-divider-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin: 0.75rem 0 0.25rem;
+}
+
+/* ── Yes / No small buttons ──────────────────────────────────────────────────── */
+
+.lv-yn {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.lv-yn-btn {
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s, color 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lv-yn-btn:hover {
+  border-color: var(--primary-light);
+}
+
+.lv-yn-yes {
+  background: #dcfce7;
+  border-color: #16a34a;
+  color: #15803d;
+}
+
+.lv-yn-no {
+  background: #fee2e2;
+  border-color: #dc2626;
+  color: #b91c1c;
+}
+
+/* ── Big Yes / No (stage 3) ──────────────────────────────────────────────────── */
+
+.lv-yn-big {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.lv-yn-big-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 140px;
+  padding: 1.5rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border);
+  background: var(--bg-page);
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lv-yn-big-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.lv-yn-big-yes.active {
+  background: #dcfce7;
+  border-color: #16a34a;
+  color: #15803d;
+}
+
+.lv-yn-big-no.active {
+  background: #fee2e2;
+  border-color: #dc2626;
+  color: #b91c1c;
+}
+
+/* ── Accordion ───────────────────────────────────────────────────────────────── */
+
+.lv-accordion {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.lv-accordion-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: var(--primary-subtle);
+  border: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lv-accordion-head:hover {
+  background: var(--primary-light);
+}
+
+.lv-accordion-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: #fff;
+}
+
+/* ── Inspection sub-step progress ────────────────────────────────────────────── */
+
+.lv-insp-header {
+  margin-bottom: 1.25rem;
+}
+
+.lv-insp-steps {
+  display: flex;
+  gap: 0.3rem;
+  margin: 0.75rem 0 0.4rem;
+}
+
+.lv-insp-dot {
+  height: 4px;
+  flex: 1;
+  border-radius: 2px;
+  background: var(--border);
+  transition: background 0.2s;
+}
+
+.lv-insp-dot-done {
+  background: var(--primary);
+}
+
+.lv-insp-dot-active {
+  background: var(--accent);
+}
+
+.lv-insp-step-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.lv-insp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem;
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.25rem;
+}
+
+.lv-insp-body > .lv-subsection-label:first-child,
+.lv-subsection-first {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* ── Field rows ──────────────────────────────────────────────────────────────── */
+
+.lv-field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 36px;
+}
+
+.lv-field-label {
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  flex: 1;
+}
+
+.lv-required {
+  color: var(--error, #e53e3e);
+  font-weight: 600;
+}
+
+.lv-field-ctrl {
+  flex-shrink: 0;
+}
+
+.lv-item-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.lv-item-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.lv-subsection-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border);
+}
+
+.lv-accordion-body > .lv-subsection-label:first-child {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.lv-remarks {
+  font-size: 0.83rem !important;
+  padding: 0.35rem 0.65rem !important;
+  color: var(--text-secondary) !important;
+}
+
+.lv-text-input {
+  width: 140px;
+  font-size: 0.85rem !important;
+  padding: 0.3rem 0.6rem !important;
+}
+
+/* ── Notes ───────────────────────────────────────────────────────────────────── */
+
+.lv-notes-wrap {
+  margin-top: 1rem;
+}
+
+.lv-notes {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* ── Inspection photos ───────────────────────────────────────────────────────── */
+
+.lv-photos-wrap {
+  margin-top: 1rem;
+}
+
+.lv-photos-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.lv-photos-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.lv-photo-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.lv-photo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--bg-page);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lv-photo-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-subtle);
+}
+
+.lv-photos-empty {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  margin: 0.25rem 0 0;
+}
+
+.lv-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.lv-photo-thumb {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+  background: var(--bg-page);
+}
+
+.lv-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lv-photo-remove {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.12s;
+}
+
+.lv-photo-remove:hover {
+  background: rgba(220, 38, 38, 0.85);
+}
+
+/* ── Resume banner ───────────────────────────────────────────────────────────── */
+
+.lv-resume-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff7ed;
+  color: #92400e;
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Existing photo preview (stage 2 resume) ─────────────────────────────────── */
+
+.lv-existing-photo {
+  margin-bottom: 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-page);
+}
+
+.lv-existing-photo-img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.lv-existing-photo-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  padding: 0.5rem 0.75rem;
+  margin: 0;
+}
+
+/* ── Navigation buttons ──────────────────────────────────────────────────────── */
+
+.lv-nav {
+  margin-top: 1.5rem;
+}
+
+.lv-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.lv-nav-row .btn {
+  white-space: normal;
+  height: auto;
+  min-height: 2.5rem;
+  text-align: center;
+  line-height: 1.35;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .lv-page {
+    padding: 1rem 0.75rem 4rem;
+  }
+
+  .lv-section {
+    padding: 1.1rem;
+  }
+
+  .lv-yn-big-btn {
+    width: 120px;
+    padding: 1.2rem 0.75rem;
+  }
+
+  .lv-text-input {
+    width: 110px;
+  }
+}

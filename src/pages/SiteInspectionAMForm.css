@@ -1,0 +1,305 @@
+/* SiteInspectionAMForm — Area Manager review wizard */
+
+.amf-page {
+  padding: 1.5rem;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.amf-header {
+  margin-bottom: 1.5rem;
+}
+
+.amf-header-sub {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* ── Stage bar ─────────────────────────────────────────────────────────────── */
+
+.amf-stagebar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 2rem;
+}
+
+.amf-stage {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  position: relative;
+}
+
+.amf-stage-dot {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--bg-page);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.amf-stage-active .amf-stage-dot {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.amf-stage-done .amf-stage-dot {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #fff;
+}
+
+.amf-stage-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.amf-stage-active .amf-stage-label {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.amf-stage-done .amf-stage-label {
+  color: #22c55e;
+}
+
+.amf-stage-line {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  margin: 0 0.5rem;
+}
+
+/* ── Section card ──────────────────────────────────────────────────────────── */
+
+.amf-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+
+.amf-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem;
+}
+
+.amf-store-card {
+  background: var(--primary-subtle);
+  border: 1px solid var(--primary-light);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.amf-store-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--primary);
+}
+
+.amf-store-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+}
+
+/* ── Navigation ────────────────────────────────────────────────────────────── */
+
+.amf-nav { margin-top: 1.5rem; }
+.amf-nav-row { display: flex; justify-content: space-between; align-items: center; }
+
+/* ── Section progress dots ─────────────────────────────────────────────────── */
+
+.amf-form-header { margin-bottom: 1rem; }
+
+.amf-dots {
+  display: flex;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.amf-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--border);
+}
+.amf-dot-active { background: var(--primary); }
+.amf-dot-done { background: #22c55e; }
+
+.amf-step-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Field rows ────────────────────────────────────────────────────────────── */
+
+.amf-form-body { display: flex; flex-direction: column; gap: 0; }
+
+.amf-field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.amf-field-row:last-child { border-bottom: none; }
+
+.amf-field-label {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.amf-field-ctrl { flex-shrink: 0; }
+
+/* ── Rating buttons (1–5) ──────────────────────────────────────────────────── */
+
+.amf-rating { display: flex; gap: 0.3rem; }
+
+.amf-rating-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s, border-color 0.1s, color 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.amf-rating-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.amf-rating-active {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #fff !important;
+}
+
+/* ── Remarks ───────────────────────────────────────────────────────────────── */
+
+.amf-remarks-wrap { margin-bottom: 1.5rem; }
+.amf-remarks { resize: vertical; min-height: 5rem; }
+
+/* ── Photos ────────────────────────────────────────────────────────────────── */
+
+.amf-photos-section {
+  margin-top: 1.25rem;
+  border-top: 1px dashed var(--border);
+  padding-top: 1.25rem;
+}
+
+.amf-photos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.amf-photos-label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.amf-photos-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.amf-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.amf-photo-thumb {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-page);
+}
+
+.amf-photo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.amf-photo-remove {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.1s;
+}
+
+.amf-photo-remove:hover { background: rgba(0, 0, 0, 0.85); }
+
+.amf-photos-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.amf-photos-actions .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .amf-page { padding: 1rem; }
+  .amf-field-row { flex-wrap: wrap; }
+  .amf-rating-btn { width: 32px; height: 32px; font-size: 0.82rem; }
+}

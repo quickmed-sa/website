@@ -1,0 +1,270 @@
+/* ── Add Store Modal ───────────────────────────────────────────────────────── */
+
+/* Overlay */
+.as-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 30, 61, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  overscroll-behavior: contain;
+}
+
+/* Card */
+.as-modal {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.07);
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 2rem);
+  overflow: hidden;
+}
+
+/* ── Header ── */
+.as-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem 1rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.as-title {
+  font-size: 1.26rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.as-subtitle {
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+.as-subtitle strong {
+  color: #c2410c;
+  font-weight: 600;
+}
+
+.as-close {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s, color 0.12s;
+  margin-top: -1px;
+}
+
+.as-close:hover {
+  background: #f1f5f9;
+  color: var(--text-primary);
+}
+
+/* ── Form body ── */
+.as-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overscroll-behavior: contain;
+}
+
+/* Required / optional markers */
+.as-req {
+  color: var(--accent);
+  margin-left: 1px;
+}
+
+.as-opt {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* Two-column row (city + state) */
+.as-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+/* Native select styled to match form-input */
+.as-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+/* ── Store type toggle ── */
+.as-type-toggle {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.as-type-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1.35rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0.06em;
+  border: none;
+  background: #f8fafc;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.as-type-btn + .as-type-btn {
+  border-left: 1px solid var(--border);
+}
+
+.as-type-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0;
+  transition: background 0.12s;
+}
+
+.as-type-btn.selected {
+  background: var(--primary);
+  color: #fff;
+}
+
+.as-type-btn.selected .as-type-dot {
+  background: var(--accent);
+}
+
+.as-type-btn:hover:not(.selected) {
+  background: var(--primary-subtle);
+  color: var(--primary);
+}
+
+.as-type-hint {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── GPS location section ── */
+.as-gps-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+}
+
+.as-gps-error {
+  font-size: 0.875rem;
+  color: #b91c1c;
+  margin: 0.4rem 0 0;
+}
+
+.as-gps-captured {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #15803d;
+  font-weight: 500;
+}
+
+.as-gps-clear {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: inherit;
+  padding: 0.1rem 0.25rem;
+  border-radius: var(--radius-sm);
+  transition: color 0.12s;
+}
+
+.as-gps-clear:hover {
+  color: #b91c1c;
+}
+
+/* ── Spinners ── */
+.as-btn-spinner {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: as-spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+
+/* When spinner is inside ghost/outline button */
+.as-gps-loading .as-btn-spinner {
+  border-color: var(--primary-light);
+  border-top-color: var(--primary);
+}
+
+@keyframes as-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Footer ── */
+.as-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.4rem 1.15rem;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Mobile: slide up from bottom ── */
+@media (max-width: 540px) {
+  .as-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .as-modal {
+    border-radius: 16px 16px 0 0;
+    max-height: 93dvh;
+    max-width: 100%;
+  }
+
+  .as-two-col {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,125 @@
+/* ── Users page ───────────────────────────────────────────────────────────── */
+
+.user-count {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  align-self: flex-end;
+}
+
+.cell-email {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Role pills */
+.role-pill {
+  display: inline-block;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.22rem 0.55rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Admin — navy blue (highest authority, brand primary) */
+.role-admin {
+  background: #dde4f0;
+  color: #1a2e5a;
+}
+
+/* Operations — teal (same authority as Admin, distinct colour) */
+.role-operations {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+/* Area Manager — orange (action role, brand accent) */
+.role-manager {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+/* Franchise — slate (standard partner, neutral) */
+.role-franchise {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+/* ── Store chips (inline in table cell / card row) ─────────────────────────── */
+
+.cell-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.assign-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.assign-chip {
+  display: inline-block;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #1a2e5a;
+  background: #dde4f0;
+  padding: 0.18rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.assign-chip--more {
+  color: #64748b;
+  background: #f1f5f9;
+}
+
+/* "All Stores" badge for Admin users */
+.assign-chip--all {
+  background: #dde4f0;
+  color: #1a2e5a;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.assign-chips-empty {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Card row variant that wraps chips neatly */
+.data-card-row--chips {
+  align-items: flex-start;
+}
+
+.data-card-row--chips .assign-chips {
+  justify-content: flex-end;
+}
+
+/* Loading spinner — navy ring with orange arc */
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #dde4f0;
+  border-top-color: #f97316;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
