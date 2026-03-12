@@ -51,7 +51,7 @@ function App() {
             <Route path="/users"  element={<RoleRoute roles={['Admin']} element={<Users />} />} />
             <Route path="/visits"     element={<Visits />} />
             <Route path="/visits/:id" element={<VisitDetail />} />
-            <Route path="/log-visit"  element={<RoleRoute roles={['Admin', 'Area Manager']} element={<LogVisit />} />} />
+            <Route path="/log-visit"  element={<RoleRoute roles={['Admin', 'Operations', 'Area Manager']} element={<LogVisit />} />} />
             <Route path="/site-inspection/:storeId" element={<SiteInspection />} />
             <Route path="/site-inspections" element={<SiteInspections />} />
             {/* compare must be declared before :id so the static segment takes priority */}
@@ -60,7 +60,7 @@ function App() {
             <Route path="/site-inspections/:id/area-manager" element={<SiteInspectionAMForm />} />
             <Route path="/site-inspections/:id/operations" element={<SiteInspectionOpsForm />} />
             <Route path="/site-inspections/:id" element={<SiteInspectionDetail />} />
-            <Route path="/schedules" element={<RoleRoute roles={['Admin', 'Area Manager']} element={<Schedules />} />} />
+            <Route path="/schedules" element={<RoleRoute roles={['Admin', 'Operations', 'Area Manager']} element={<Schedules />} />} />
             <Route path="/store-activations"     element={<RoleRoute roles={['Admin', 'Operations', 'Franchise', 'Area Manager']} element={<StoreActivations />} />} />
             <Route path="/store-activations/:id" element={<RoleRoute roles={['Admin', 'Operations', 'Franchise', 'Area Manager']} element={<StoreActivation />} />} />
             <Route path="/stores/:id/edit"       element={<RoleRoute roles={['Admin', 'Operations']} element={<EditStore />} />} />

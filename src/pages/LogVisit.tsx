@@ -200,6 +200,11 @@ export function LogVisit() {
   const [storeId,    setStoreId]    = useState('')
   const [storesLoading, setStoresLoading] = useState(true)
 
+  const isAdminOrOps = (() => {
+    const role = authService.getCurrentUser()?.role
+    return role === 'Admin' || role === 'Operations'
+  })()
+
   // Stage 2 — photo
   const [photo, setPhoto] = useState<CapturedImage | null>(null)
 
@@ -415,7 +420,13 @@ export function LogVisit() {
         if (scheduled.data.length > 0) {
           vid = scheduled.data[0]._id
         } else {
-          const visit = await visitsService.create({ store: storeId, visitDate: new Date().toISOString(), status: VisitStatus.INCOMPLETE })
+          const currentUser = authService.getCurrentUser()
+          const visit = await visitsService.create({
+            store: storeId,
+            visitDate: new Date().toISOString(),
+            status: VisitStatus.INCOMPLETE,
+            ...(isAdminOrOps && currentUser ? { areaManager: currentUser.sub } : {}),
+          })
           vid = visit._id
         }
         setVisitId(vid)
@@ -732,26 +743,26 @@ export function LogVisit() {
           Select Store
         </h2>
 
-        {(locLoading || storesLoading) && (
+        {(isAdminOrOps ? storesLoading : (locLoading || storesLoading)) && (
           <div className="lv-status">
             <span className="spinner" />
             {locLoading ? 'Getting your location…' : 'Loading stores…'}
           </div>
         )}
 
-        {!locLoading && !storesLoading && locError && (
+        {!isAdminOrOps && !locLoading && !storesLoading && locError && (
           <div className="lv-notice lv-notice-error">{locError}</div>
         )}
 
-        {!locLoading && !storesLoading && !locError && nearbyStores.length === 0 && (
+        {!isAdminOrOps && !locLoading && !storesLoading && !locError && nearbyStores.length === 0 && (
           <div className="lv-notice lv-notice-error">
             No stores found within 100 m of your location. Visits can only be logged near stores.
           </div>
         )}
 
-        {!locLoading && !storesLoading && !locError && nearbyStores.length > 0 && (
+        {(isAdminOrOps ? !storesLoading : (!locLoading && !storesLoading && !locError && nearbyStores.length > 0)) && (
           <div className="lv-store-list">
-            {nearbyStores.map(s => (
+            {(isAdminOrOps ? sortedStores : nearbyStores).map(s => (
               <button
                 key={s._id}
                 type="button"
@@ -777,7 +788,7 @@ export function LogVisit() {
           <button
             type="button"
             className="btn btn-primary"
-            disabled={!storeId || nearbyStores.length === 0 || saving}
+            disabled={!storeId || (!isAdminOrOps && nearbyStores.length === 0) || saving}
             onClick={handleStage1Next}
           >
             {saving ? <><span className="spinner" /> Saving…</> : 'Next — Take Photo'}

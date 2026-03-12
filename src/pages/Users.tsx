@@ -202,7 +202,7 @@ export function Users() {
                     <td><RolePill role={user.role} /></td>
                     <td><StatusBadge status={user.status} /></td>
                     <td>
-                      {user.role === UserRole.ADMIN ? (
+                      {(user.role === UserRole.ADMIN || user.role === UserRole.OPERATIONS) ? (
                         <span className="assign-chip assign-chip--all">All Stores</span>
                       ) : (
                         <div className="cell-chips">
@@ -263,7 +263,7 @@ export function Users() {
                 </div>
                 <div className="data-card-row data-card-row--chips">
                   <span className="data-card-label">Stores</span>
-                  {user.role === UserRole.ADMIN ? (
+                  {(user.role === UserRole.ADMIN || user.role === UserRole.OPERATIONS) ? (
                     <span className="assign-chip assign-chip--all">All Stores</span>
                   ) : (
                     <StoreChips rawStores={user.stores} stores={stores} />
@@ -282,7 +282,7 @@ export function Users() {
                         ? 'Deactivate'
                         : 'Activate'}
                   </button>
-                  {user.role !== UserRole.ADMIN && (
+                  {user.role !== UserRole.ADMIN && user.role !== UserRole.OPERATIONS && (
                     <button
                       className="btn btn-ghost btn-sm"
                       onClick={() => setModalUserId(user._id)}
